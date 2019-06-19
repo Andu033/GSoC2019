@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import './Dropzone.css'
-
+import '../../assets/Dropzone.css'
+import { DropzoneActions } from '../../features/Dropzone'
+import { connect } from 'react-redux'
 class Dropzone extends Component {
   constructor (props) {
     super(props)
@@ -49,6 +50,8 @@ class Dropzone extends Component {
     let reader = new FileReader()
     let file = files[0]
     console.log(file)
+    this.props.add(file)
+
     const file1 = new Blob([file], { type: 'application/pdf' })
     const fileURL = URL.createObjectURL(file1)
 
@@ -60,7 +63,6 @@ class Dropzone extends Component {
     }
     reader.readAsDataURL(file)
     console.log(fileURL)
-    window.open(fileURL)
     this.state.photo = files[0].name
     if (this.props.onFilesAdded) {
       const array = this.fileListToArray(files)
@@ -112,5 +114,12 @@ class Dropzone extends Component {
     )
   }
 }
-
-export default Dropzone
+const mapDispatchToProps = dispatch => ({
+  add: file => {
+    dispatch(DropzoneActions.add(file))
+  }
+})
+export default connect(
+  null,
+  mapDispatchToProps
+)(Dropzone)

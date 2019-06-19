@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Dropzone from './Dropzone.js'
+import Dropzone from './components/Dropzone/Dropzone.js'
 import './App.css'
 import ThumbnailController from './ThumbnailController.js'
 class App extends Component {

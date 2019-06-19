@@ -4,10 +4,16 @@ import App from './App'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { ThumbnailReducers } from './features/Thumbnail'
+import { DropzoneReducers } from './features/Dropzone'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const store = createStore(ThumbnailReducers)
+const rootReducer = combineReducers({
+  Thumbnail: ThumbnailReducers,
+  Dropzone: DropzoneReducers
+})
+const store = createStore(rootReducer, composeWithDevTools())
 
 render(
   <Provider store={store}>
