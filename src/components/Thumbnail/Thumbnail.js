@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Thumbnail.css'
+import '../../assets/Thumbnail.css'
 
 class Thumbnail extends Component {
   constructor (props) {
@@ -11,14 +11,14 @@ class Thumbnail extends Component {
       input: ''
     }
 
-    this.onDragOver = this.onDragOver.bind(this)
-    this.onDragLeave = this.onDragLeave.bind(this)
+    this.onMouseOver = this.onMouseOver.bind(this)
+    this.onMouseLeave = this.onMouseLeave.bind(this)
   }
-  onDragOver (evt) {
+  onMouseOver (evt) {
     this.setState({ hightlight: true })
   }
 
-  onDragLeave () {
+  onMouseLeave () {
     this.setState({ hightlight: false })
   }
   handleChange = event => {
@@ -37,14 +37,14 @@ class Thumbnail extends Component {
         <div className='Thumbnail'>
           <img
             className='Image'
-            src='https://wallpaperplay.com/walls/full/5/8/2/294655.jpg'
+            src='https://i.ytimg.com/vi/szmS_M-BMls/maxresdefault.jpg'
             alt='Paris'
           />
         </div>
         {!this.state.clicked ? (
           <div
-            onMouseEnter={this.onDragOver}
-            onMouseLeave={this.onDragLeave}
+            onMouseEnter={this.onMouseOver}
+            onMouseLeave={this.onMouseLeave}
             onClick={this.handleClick}
             className={`Name ${this.state.hightlight ? 'Highlight' : ''}`}
           >
@@ -64,6 +64,8 @@ class Thumbnail extends Component {
               onChange={this.handleChange}
               className='InputName'
             />
+            <br />
+            <button onClick={() => this.setState({ clicked: false })}>Y</button>
             <button onClick={() => this.setState({ clicked: false })}>X</button>
           </div>
         )}

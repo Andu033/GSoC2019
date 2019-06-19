@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import './Thumbnail.js'
-import Thumbnail from './Thumbnail.js'
+import Thumbnail from './components/Thumbnail/Thumbnail.js'
 
 class ThumbnailController extends Component {
   constructor (props) {
     super(props)
     this.state = {
       value: 'asdasdasasfas',
-
       content: {}
     }
   }
